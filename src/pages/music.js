@@ -2,7 +2,7 @@ import Head from "next/head";
 import BowlingAlley from "../components/BowlingAlley";
 import { AnimationLayout } from "../components/Transition";
 
-const SpotifyIFrame = ({ src, height }) => {
+const SpotifyIFrame = ({ src, height, startAt }) => {
     return (
         <div>
             <iframe
@@ -16,16 +16,18 @@ const SpotifyIFrame = ({ src, height }) => {
 };
 
 const YoutubeIFrame = ({ src }) => {
-    return <iframe
-        width="80%"
-        height="150"
-        src={src}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-    ></iframe>;
+    return (
+        <iframe
+            width="80%"
+            height="150"
+            src={src}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+    );
 };
 
 export default function MusicPage() {
@@ -34,10 +36,15 @@ export default function MusicPage() {
         height: 400,
     };
     const doohickey = {
-        src: "https://open.spotify.com/embed/track/0GdFn9cxQlB0qpEy2AvGlr?utm_source=generator&theme=0",
-        height: 125,
+        src: "https://open.spotify.com/embed/track/0GdFn9cxQlB0qpEy2AvGlr#2:39?utm_source=generator&theme=0",
+        height: 80,
     };
-    const ytEmbeds = [{ src: "https://www.youtube.com/embed/mSYSDZg7fsc?si=QkWCHCVMbBjlrgQZ", }];
+    const ytEmbeds = [
+        { src: "https://www.youtube.com/embed/mSYSDZg7fsc?si=QkWCHCVMbBjlrgQZ" },
+        { src: "https://www.youtube.com/embed/kOfVGNb2HFM?si=1QO91vm_WiL-Ff_9" },
+        { src: "https://www.youtube.com/embed/XBoUt442sLs?si=vrKJTLCshtQFg6Eq" },
+        { src: "https://www.youtube.com/embed/UTr-ZZu8Zu8?si=TgOMyb3puofi_ILV" },
+    ];
     return (
         <>
             <Head>
@@ -67,7 +74,11 @@ export default function MusicPage() {
                         <p>
                             YouTube links
                             {ytEmbeds.map(({ src }, i) => {
-                                return <div><YoutubeIFrame src={src} /></div>
+                                return (
+                                    <div>
+                                        <YoutubeIFrame src={src} />
+                                    </div>
+                                );
                             })}
                         </p>
                     </div>

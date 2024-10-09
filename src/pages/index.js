@@ -21,11 +21,6 @@ const ProfilePicture = styled.div`
 
 const socialsLinks = [
   {
-    href: "/pdfs/resume.pdf",
-    title: "résumé",
-    external: true,
-  },
-  {
     href: "https://www.linkedin.com/in/gaelan-mcmillan/",
     title: "linkedin",
     external: true,
@@ -38,6 +33,11 @@ const socialsLinks = [
   {
     href: "https://codeforces.com/profile/gaelanmcm",
     title: "codeforces",
+    external: true,
+  },
+  {
+    href: "/pdfs/resume.pdf",
+    title: "résumé",
     external: true,
   },
 ];
@@ -57,9 +57,16 @@ export default function AboutPage() {
             <p >
               <h2>Hi, I'm Gaelan</h2>
               + computer science student<br />
-              + favourite software: <i>Vim</i>, <i>Google Maps</i>, <i>Ableton Live</i><br />
-              + hobbies: running; <a className="outgoing-link" href={"/solves"}>programming puzzles</a><br />
+              + hobbies: games; running; <a className="outgoing-link" href={"/solves"}>programming puzzles</a><br />
               + music lover; <a className="outgoing-link" href={"/music"}>bassist for 10+ years</a><br />
+              <details>
+                <summary>more about me</summary>
+                <info>
+                  + favourite music: <i>Stevie Wonder</i>, <i>D'Angelo</i>, <i>Machinedrum</i><br />
+                  + favourite languages: <i>TypeScript</i>, <i>C</i>, <i>Rust</i>, <i>Elixir</i><br />
+                  + favourite tools: <i>Vim</i>, <i>GNU Utils</i>, <i>Ableton Live</i><br />
+                </info>
+              </details>
             </p>
             <p>
               <h2>Find me on the web</h2>
