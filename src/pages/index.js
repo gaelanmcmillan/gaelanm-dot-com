@@ -3,9 +3,7 @@ import BowlingAlley from "../components/BowlingAlley";
 
 import styled from "styled-components";
 import { AnimationLayout } from "../components/Transition";
-import {
-  info_block
-} from "../styles/Index.module.scss";
+import { info_block } from "../styles/Index.module.scss";
 
 const ProfilePicture = styled.div`
   max-width: 250px;
@@ -53,18 +51,44 @@ export default function AboutPage() {
           <ProfilePicture>
             <img src="/images/ProfilePicture.JPG" />
           </ProfilePicture>
-          <div className={`${info_block}`} style={{ marginLeft: "auto", marginRight: "auto", textAlign: "center" }}>
-            <p >
+          <div
+            className={`${info_block}`}
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center",
+            }}
+          >
+            <p>
               <h2>Hi, I'm Gaelan</h2>
-              + computer science student<br />
-              + hobbies: games; running; <a className="outgoing-link" href={"/solves"}>programming puzzles</a><br />
-              + music lover; <a className="outgoing-link" href={"/music"}>bassist for 10+ years</a><br />
+              + computer science student
+              <br />+ music lover;{" "}
+              <a className="outgoing-link" href={"/music"}>
+                bassist for 10+ years
+              </a>
+              <br />
+              + interests: audio visualization; games; math;
               <details>
                 <summary>more about me</summary>
                 <info>
-                  + favourite music: <i>Stevie Wonder</i>, <i>D'Angelo</i>, <i>Machinedrum</i><br />
-                  + favourite languages: <i>TypeScript</i>, <i>C</i>, <i>Rust</i>, <i>Elixir</i><br />
-                  + favourite tools: <i>Vim</i>, <i>GNU Utils</i>, <i>Ableton Live</i><br />
+                  + favourite tools: <i>Vim</i>, <i>GNU Utils</i>,{" "}<i>Ableton Live</i><br />
+                  + favourite music: <i>D'Angelo</i>, <i>Machinedrum</i>,{" "}
+                  <i>Stevie Wonder</i>
+                  <br />
+                  + hobbies: creative coding (p5.js); running;{" "}
+                  <a className="outgoing-link" href={"/solves"}>
+                    programming puzzles
+                  </a><br />
+                  + favourite programming languages (in order of length-of-remark): <br />
+                  <i>
+                    C++ (mostly for <code>#include &lt;algorithm&gt;</code>)<br />
+                    TypeScript (mostly for <code>strict: true</code>);<br />
+                    Python (mostly for its succinctness);<br />
+                    Rust (mostly for ADTs, cargo);<br />
+                    C (mostly for its simplicity);<br />
+                    Haskell (mostly for tacit);<br />
+                    Elixir (mostly for <code>|&gt;</code>);<br />
+                  </i>
                 </info>
               </details>
             </p>
@@ -73,7 +97,7 @@ export default function AboutPage() {
               {socialsLinks.map(({ href, title, external }, i) => {
                 return (
                   <div key={i}>
-                    <a className="outgoing-link" href={href} >
+                    <a className="outgoing-link" href={href}>
                       {title}
                       {external ? " ⧉" : ""}
                     </a>
@@ -82,10 +106,8 @@ export default function AboutPage() {
               })}
             </p>
           </div>
-
-
         </BowlingAlley>
-      </AnimationLayout>
+      </AnimationLayout >
     </>
   );
 }
