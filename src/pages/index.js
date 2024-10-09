@@ -67,7 +67,7 @@ export default function AboutPage() {
                 bassist for 10+ years
               </a>
               <br />
-              + interests: audio visualization; games; math;
+              + interests: audio visualization; multiplayer software; math;
               <details>
                 <summary>more about me</summary>
                 <info>
