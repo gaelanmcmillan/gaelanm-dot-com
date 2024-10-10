@@ -32,7 +32,7 @@ const Header = () => {
   const { asPath } = useRouter();
 
   return (
-    <header>
+    <header style={{ position: "sticky", top: 0, zIndex: 1000 }}>
       <BowlingAlley className={`nav-row soft-shadow`} >
         <nav>
         </nav>

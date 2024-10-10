@@ -59,7 +59,7 @@ export default function AboutPage() {
               textAlign: "center",
             }}
           >
-            <p>
+            <div>
               <h2>Hi, I'm Gaelan</h2>
               + computer science student
               <br />+ music lover;{" "}
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 bassist for 10+ years
               </a>
               <br />
-              + interests: audio visualization; multiplayer software; math;
+              + interests: audio visualization; multiplayer software; math
               <details>
                 <summary>more about me</summary>
                 <info>
@@ -91,8 +91,8 @@ export default function AboutPage() {
                   </i>
                 </info>
               </details>
-            </p>
-            <p>
+            </div>
+            <div>
               <h2>Find me on the web</h2>
               {socialsLinks.map(({ href, title, external }, i) => {
                 return (
@@ -104,7 +104,7 @@ export default function AboutPage() {
                   </div>
                 );
               })}
-            </p>
+            </div>
           </div>
         </BowlingAlley>
       </AnimationLayout >

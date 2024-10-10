@@ -39,28 +39,24 @@ const useTagColors = () => {
 };
 
 /**
- * tagList — the current list of tag strings by which to filter
- * clearTagList — a callback to clear all tags from the list
- * addTagToList — a function that takes a tag and creates a callback to add that tag to the list
- * removeTagFromList — similar to addTagToList but removes instead
- * @returns [tagList, clearTagList, addTagToList, removeTagFromList];
+ * @returns [tagList, clearTagList, toggleTag];
  */
 const useTagList = () => {
   const [tagList, setTagList] = useState([]);
-  const addTagToList = (tag) => (e) => {
+  const toggleTag = (tag) => (e) => {
     e.stopPropagation();
-    if (tagList.includes(tag)) return;
-    setTagList(tagList.concat(tag));
-  };
-  const removeTagFromList = (tag) => (e) => {
-    e.stopPropagation();
-    setTagList(tagList.filter((t) => t != tag));
+    e.preventDefault();
+    if (tagList.includes(tag)) {
+      setTagList(tagList.filter((t) => t != tag));
+    } else {
+      setTagList(tagList.concat(tag));
+    }
   };
   const clearTagList = () => {
     setTagList([]);
   };
 
-  return [tagList, clearTagList, addTagToList, removeTagFromList];
+  return [tagList, clearTagList, toggleTag];
 };
 
 const TagHolder = ({ text, bgColor, onClick }) => {

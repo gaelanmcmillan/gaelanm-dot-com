@@ -48,7 +48,7 @@ export default function MusicPage() {
     return (
         <>
             <Head>
-                <title>Gaelan McMillan's Website</title>
+                <title>Gaelan McMillan's Music</title>
             </Head>
             <AnimationLayout>
                 <BowlingAlley>
@@ -57,21 +57,25 @@ export default function MusicPage() {
                             marginLeft: "auto",
                             marginRight: "auto",
                             textAlign: "center",
+                            display: 'flex',
+                            gap: "1rem",
+                            flexDirection: 'column',
+                            marginBottom: '1rem'
                         }}
                     >
-                        <p>
+                        <div>
                             <h2>My musical credits</h2>
                             As a bassist/composer
                             <SpotifyIFrame src={kubla.src} height={kubla.height} />
                             <i>Kubla</i> is the work of Kiaran, my older brother.
                             <br />I play bass all his songs (except <i>Changes</i>, but that
                             song's great too).
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             Other bass credits
                             <SpotifyIFrame src={doohickey.src} height={doohickey.height} />
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             YouTube links
                             {ytEmbeds.map(({ src }, i) => {
                                 return (
@@ -80,7 +84,7 @@ export default function MusicPage() {
                                     </div>
                                 );
                             })}
-                        </p>
+                        </div>
                     </div>
                 </BowlingAlley>
             </AnimationLayout>

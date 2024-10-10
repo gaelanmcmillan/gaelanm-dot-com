@@ -43,7 +43,7 @@ const Title = styled.span`
   width: 100%;
 `;
 
-const InfoContent = styled.div`
+const InfoContent = styled.a`
   width: 100%;
 `;
 
@@ -64,7 +64,7 @@ const SolutionsCard = ({
   date,
   difficulty,
   prefix = "/solves/",
-  addTagCallback,
+  toggleTag,
 }) => {
   const siteName = extractSiteName(url);
   return (
@@ -76,7 +76,7 @@ const SolutionsCard = ({
           borderRadius: "0.5rem",
         }}
       >
-        <Link href={prefix + slug}>
+        <Link href={prefix + slug} passHref>
           <InfoContent style={{ cursor: "pointer" }}>
             <Title>{title}</Title>
             <div>
@@ -85,7 +85,7 @@ const SolutionsCard = ({
                   <TagBubble
                     key={i}
                     tag={word}
-                    onClick={addTagCallback(word)}
+                    onClick={toggleTag(word)}
                   />
                 );
               })}
@@ -94,7 +94,7 @@ const SolutionsCard = ({
                   <TagBubble
                     key={i}
                     tag={lang}
-                    onClick={addTagCallback(lang)}
+                    onClick={toggleTag(lang)}
                   />
                 );
               })}

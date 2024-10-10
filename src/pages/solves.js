@@ -14,7 +14,7 @@ import TagBubble, {
 } from "../components/TagBubble";
 
 const SolutionsPage = ({ posts, allTags }) => {
-  const [tagList, clearTagList, addTagToList, removeTagFromList] = useTagList();
+  const [tagList, clearTagList, toggleTag] = useTagList();
   const [doShowTags, setDoShowTags] = useState(false);
   return (
     <>
@@ -23,6 +23,11 @@ const SolutionsPage = ({ posts, allTags }) => {
       </Head>
       <AnimationLayout>
         <BowlingAlley>
+          <div style={{
+            textAlign: "center",
+          }}>
+            <h2>Here are some editorialized solutions to my favourite programming puzzles</h2>
+          </div>
           <div
             style={{
               marginBottom: "1rem",
@@ -35,7 +40,9 @@ const SolutionsPage = ({ posts, allTags }) => {
               setDoShowTags(!doShowTags);
             }}
           >
-            <i>Click on tags to filter solutions by category or language.</i>
+            <i>
+              {doShowTags ? 'Click here to hide all tags.' : 'Click here to show all tags; click a tag to filter solves by topic or technology.'}
+            </i>
           </div>
           <div
             style={{
@@ -45,14 +52,14 @@ const SolutionsPage = ({ posts, allTags }) => {
           >
             {allTags.map((tag, i) => {
               return (
-                <TagBubble key={i} tag={tag} onClick={addTagToList(tag)} />
+                <TagBubble key={i} tag={tag} onClick={toggleTag(tag)} />
               );
             })}
           </div>
           <TagListView
             tagList={tagList}
             clearListCallback={clearTagList}
-            removeTagCallback={removeTagFromList}
+            removeTagCallback={toggleTag}
           />
           {posts
             .filter(
@@ -73,7 +80,7 @@ const SolutionsPage = ({ posts, allTags }) => {
                 languages={sol.frontmatter.languages}
                 date={sol.frontmatter.date}
                 author={sol.frontmatter.author}
-                addTagCallback={addTagToList}
+                toggleTag={toggleTag}
                 difficulty={sol.frontmatter.difficulty}
               />
             ))}
