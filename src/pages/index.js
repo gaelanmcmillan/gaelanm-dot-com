@@ -29,12 +29,22 @@ const socialsLinks = [
     external: true,
   },
   {
+    href: "https://leetcode.com/u/gaelanmcm/",
+    title: 'leetcode',
+    external: true,
+  },
+  {
     href: "https://codeforces.com/profile/gaelanmcm",
     title: "codeforces",
     external: true,
   },
   {
-    href: "/pdfs/resume.pdf",
+    href: "https://open.kattis.com/users/gaelanmcm",
+    title: "kattis",
+    external: true
+  },
+  {
+    href: "/pdfs/GaelanMcMillanResume2024.pdf",
     title: "résumé",
     external: true,
   },
@@ -59,15 +69,17 @@ export default function AboutPage() {
               textAlign: "center",
             }}
           >
-            <div>
-              <h2>Hi, I'm Gaelan</h2>
-              + computer science student
-              <br />+ music lover;{" "}
-              <a className="outgoing-link" href={"/music"}>
-                bassist for 10+ years
-              </a>
-              <br />
-              + interests: audio visualization; multiplayer software; math
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div>
+                <h2>Hi, I'm Gaelan</h2>
+                + computer science student
+                <br />+ music lover;{" "}
+                <a className="outgoing-link" href={"/music"}>
+                  bassist for 10+ years
+                </a>
+                <br />
+                + interests: audio visualization; multiplayer software; math
+              </div>
               <details>
                 <summary>more about me</summary>
                 <info>
@@ -91,19 +103,19 @@ export default function AboutPage() {
                   </i>
                 </info>
               </details>
-            </div>
-            <div>
-              <h2>Find me on the web</h2>
-              {socialsLinks.map(({ href, title, external }, i) => {
-                return (
-                  <div key={i}>
-                    <a className="outgoing-link" href={href}>
-                      {title}
-                      {external ? " ⧉" : ""}
-                    </a>
-                  </div>
-                );
-              })}
+              <div>
+                <h2 style={{ fontSize: '14pt' }}>Find me on the web</h2>
+                {socialsLinks.map(({ href, title, external }, i) => {
+                  return (
+                    <div key={i}>
+                      <a className="outgoing-link" href={href}>
+                        {title}
+                        {external ? " ⧉" : ""}
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </BowlingAlley>

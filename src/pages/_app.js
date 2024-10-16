@@ -1,8 +1,7 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { TopLevelAnimationWrapper } from "../components/Transition";
 import "../styles/globals.scss";
-import Script from "next/script";
 
 import Container from "react-bootstrap/Container";
 
@@ -21,20 +20,6 @@ const MyApp = ({ Component, pageProps }) => {
         href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&family=Open+Sans:wght@300&family=Source+Sans+Pro&&display=swap"
         rel="stylesheet"
       />
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-XZ5GXDTD4T"
-      ></Script>
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-XZ5GXDTD4T');
-        `}
-      </Script>
-
       <Container fluid className="light-mode">
         <Header />
         <TopLevelAnimationWrapper>
