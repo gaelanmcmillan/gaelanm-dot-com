@@ -1,10 +1,8 @@
-// @type {import('next').NextConfig}
 
-import nextMDX from "@next/mdx";
-import theme from "shiki/themes/solarized-dark.json" assert { type: "json" };
-import { remarkCodeHike } from "@code-hike/mdx";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
+const { remarkCodeHike } = require("@code-hike/mdx");
+const nextMDX = requre("@next/mdx");
+const rehypeKatex = require("rehype-katex");
+const theme = require("shiki/themes/solarized-dark.json");
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,

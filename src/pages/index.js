@@ -80,29 +80,6 @@ export default function AboutPage() {
                 <br />
                 + interests: audio visualization; multiplayer software; math
               </div>
-              <details>
-                <summary>more about me</summary>
-                <info>
-                  + favourite tools: <i>Vim</i>, <i>GNU Utils</i>,{" "}<i>Ableton Live</i><br />
-                  + favourite music: <i>D'Angelo</i>, <i>Machinedrum</i>,{" "}
-                  <i>Stevie Wonder</i>
-                  <br />
-                  + hobbies: creative coding (p5.js); running;{" "}
-                  <a className="outgoing-link" href={"/solves"}>
-                    programming puzzles
-                  </a><br />
-                  + favourite programming languages (in order of length-of-remark): <br />
-                  <i>
-                    C++ (mostly for <code>#include &lt;algorithm&gt;</code>)<br />
-                    TypeScript (mostly for <code>strict: true</code>);<br />
-                    Python (mostly for its succinctness);<br />
-                    Rust (mostly for ADTs, cargo);<br />
-                    C (mostly for its simplicity);<br />
-                    Haskell (mostly for tacit);<br />
-                    Elixir (mostly for <code>|&gt;</code>);<br />
-                  </i>
-                </info>
-              </details>
               <div>
                 <h2 style={{ fontSize: '14pt' }}>Find me on the web</h2>
                 {socialsLinks.map(({ href, title, external }, i) => {
@@ -115,6 +92,10 @@ export default function AboutPage() {
                     </div>
                   );
                 })}
+              </div>
+              <div>
+                <h2 style={{ fontSize: '14pt' }}>Email me</h2>
+                "contact" at [name of this website]
               </div>
             </div>
           </div>
