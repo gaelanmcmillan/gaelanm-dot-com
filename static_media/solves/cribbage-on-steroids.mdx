@@ -1,19 +1,20 @@
 ---
-title: 'Cribbage On Steroids'
-url: 'https://codeforces.com/contest/467/problem/C'
-author: 'Kattis — ECNA Judging Team'
-tags: ['Implementation', 'Counting', 'Dynamic Programming'] 
-languages: ['C++']
-difficulty: hard
-date: '2023-02-26'
+title: "Cribbage On Steroids"
+url: "https://open.kattis.com/problems/cribbageonsteroids"
+author: "Kattis — ECNA Judging Team"
+tags: ["Implementation", "Counting", "Dynamic Programming"]
+languages: ["C++"]
+difficulty: medium
+date: "2023-02-26"
 ---
 
-*At the time of writing, this problem has a difficulty rating of 6.7 on Kattis, which qualifies as a Hard. It's fresh from the contest — I think the difficulty will even out to around a 4.0.*
+_At the time of writing, this problem has a difficulty rating of 6.7 on Kattis, which qualifies as a Hard. It's fresh from the contest — I think the difficulty will even out to around a 4.0._
 
 This is a 3-part implementation task. Implement a cribbage scorer for `n`-length hands.
 
 There are three main subtasks:
 Given an array of integers...
+
 1. ... **count all the ways you can sum to 15**.<br/>This is solveable in `n^2` steps using dynamic programming. See the function `count_sums_to_k` for implementation details.
 2. ... **count all pairs of identical values**.<br/>This is given by `n` choose 2 (`n(n-1)/2`), with `n` being the frequency of each value in the array.
 3. ... **count all ways to make a maximum length contiguous runs of length 3 or more** after sorting the array.<br/>This is done in linear time by iterating over an ordered map of the `{ value, frequency }`.
@@ -21,10 +22,10 @@ Given an array of integers...
 There are more implementation details to consider. For instance, Aces have a face value of 1, but 10s, Jacks, Queens and Kings all have a face value of 10.
 Keeping all the requirements in order is key.
 
-*No one task is difficult on its own, but implementing all three without writing a bug is the challenge! I overlooked the "length 3 or more" requirement for counting runs on my first try. Took a minute to catch.* 
+_No one task is difficult on its own, but implementing all three without writing a bug is the challenge! I overlooked the "length 3 or more" requirement for counting runs on my first try. Took a minute to catch._
 
 <CH.Code>
-```cpp 
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <numeric>
@@ -34,67 +35,69 @@ Keeping all the requirements in order is key.
 
 using ll = long long;
 
-/**
- * Count all the ways to sum to `k` with the values in `arr`.
- * Complexity: O(|arr|^2)
- * */
-ll count_sums_to_k(ll k, const std::vector<ll>& arr) {
-    // `sum[i]` = the number of subsets of `arr` that sum to `i`
-    std::vector<ll> sum (k+1, 0);
-    sum[0] = 1; // We can sum to 0 by adding 0 elements together :)
-    for (ll x : arr) {
-        for (int i = k; i >= 0; --i) {
-            if (sum[i] != 0 && i+x <= k) {
-                // Since `sum[i]` subsets already sum to `i`, 
-                // we can add `x` to each of those subsets, 
-                // summing to `i+x` in `sum[i]` different ways!
-                sum[i+x] += sum[i]; 
-            }
-        }
-    }
-    return sum[k];
-}
+/\*\*
 
-/**
- * Count all disjoint 'runs' of length 3 or more.
- * */
-ll count_runs(const std::map<ll, ll>& counts) {
-    ll score = 0;
-    ll len = 1;
-    ll card = -1;
-    ll mul = 1;
-    for (const auto& [v, k] : counts) {
-        if (card == -1) { card = v; mul = k; continue; }
-        if (v == card+1) {
-            mul *= k;
-            len++;
-        } else {
-            score += (len > 2 ? mul * len : 0LL);
-            len = 1;
-            mul = k;
-        }
-        card = v;
-    }
-    return score + (len > 2 ? mul * len : 0LL);
-}
+- Count all the ways to sum to `k` with the values in `arr`.
+- Complexity: O(|arr|^2)
+- \*/
+  ll count_sums_to_k(ll k, const std::vector<ll>& arr) {
+  // `sum[i]` = the number of subsets of `arr` that sum to `i`
+  std::vector<ll> sum (k+1, 0);
+  sum[0] = 1; // We can sum to 0 by adding 0 elements together :)
+  for (ll x : arr) {
+  for (int i = k; i >= 0; --i) {
+  if (sum[i] != 0 && i+x <= k) {
+  // Since `sum[i]` subsets already sum to `i`,
+  // we can add `x` to each of those subsets,
+  // summing to `i+x` in `sum[i]` different ways!
+  sum[i+x] += sum[i];
+  }
+  }
+  }
+  return sum[k];
+  }
 
-/**
- * AKA count the pairs that can be made from `n` identical elements.
- **/
-ll n_choose_2(ll n) {
-    return (n*n - n)/2;
-}
+/\*\*
+
+- Count all disjoint 'runs' of length 3 or more.
+- _/
+  ll count_runs(const std::map<ll, ll>& counts) {
+  ll score = 0;
+  ll len = 1;
+  ll card = -1;
+  ll mul = 1;
+  for (const auto& [v, k] : counts) {
+  if (card == -1) { card = v; mul = k; continue; }
+  if (v == card+1) {
+  mul _= k;
+  len++;
+  } else {
+  score += (len > 2 ? mul _ len : 0LL);
+  len = 1;
+  mul = k;
+  }
+  card = v;
+  }
+  return score + (len > 2 ? mul _ len : 0LL);
+  }
+
+/\*\*
+
+- AKA count the pairs that can be made from `n` identical elements. \**/
+  ll n_choose_2(ll n) {
+  return (n*n - n)/2;
+  }
 
 int main () {
-    // map each card to a number that reflects the order of the ranks
-    const auto encode = [] (char card) -> ll {
-        if (card == 'A') return 1LL;
-        if (card == 'T') return 10LL;
-        if (card == 'J') return 11LL;
-        if (card == 'Q') return 12LL;
-        if (card == 'K') return 13LL;
-        return card - '0';
-    };
+// map each card to a number that reflects the order of the ranks
+const auto encode = [] (char card) -> ll {
+if (card == 'A') return 1LL;
+if (card == 'T') return 10LL;
+if (card == 'J') return 11LL;
+if (card == 'Q') return 12LL;
+if (card == 'K') return 13LL;
+return card - '0';
+};
 
     int n;
     std::cin >> n;
@@ -113,8 +116,8 @@ int main () {
     };
 
     std::vector<ll> values (n);
-    std::transform(cards.begin(), cards.end(), values.begin(), 
-            [&] (char card) { 
+    std::transform(cards.begin(), cards.end(), values.begin(),
+            [&] (char card) {
                 return face_value(encode(card));
             });
 
@@ -128,6 +131,9 @@ int main () {
     ll runs = count_runs(counts);
 
     std::cout << 2 * (to15 + pairs) + runs << '\n';
+
 }
+
 ```
 </CH.Code>
+```

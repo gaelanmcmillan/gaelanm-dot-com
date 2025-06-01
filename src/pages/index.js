@@ -44,7 +44,7 @@ const socialsLinks = [
     external: true
   },
   {
-    href: "/pdfs/GaelanMcMillanResume2024.pdf",
+    href: "/pdfs/GaelanMcMillanResume.pdf",
     title: "résumé",
     external: true,
   },
