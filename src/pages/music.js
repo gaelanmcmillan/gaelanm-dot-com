@@ -68,8 +68,6 @@ export default function MusicPage() {
                             As a bassist/composer
                             <SpotifyIFrame src={kubla.src} height={kubla.height} />
                             <i>Kubla</i> is the work of Kiaran, my older brother.
-                            <br />I play bass all his songs (except <i>Changes</i>, but that
-                            song's great too).
                         </div>
                         <div>
                             Other bass credits
